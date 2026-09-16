@@ -1,0 +1,28 @@
+{% extends "pedidos/template/base.html" %}
+
+{% block title %} Crear Producto {%endblock%}
+
+{% block contenido %}
+<div id="form-registro" class="card p-4 border-1">
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre </label>
+            <input type="text" class="form-control" name="nombre" placeholder="Nombre">
+        </div>
+        <div class="mb-3">
+            <label for="precio" class="form-label">Precio</label>
+            <input type="number" class="form-control" name="precio" placeholder="Precio">
+        </div>
+        <div class="mb-3">
+            <select name="categoria" class="form-select" aria-label="Default select example">
+                <option selected>Categoría</option>
+                <option value="1">Hamburguesas</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+    </form>
+</div>
+{%endblock%}

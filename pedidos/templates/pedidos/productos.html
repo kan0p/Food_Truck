@@ -1,0 +1,56 @@
+{% extends "pedidos/template/base.html" %}
+
+{% block contenido %}
+<div class="row g-4">
+
+    <!-- PRODUCTO 1 -->
+    {% for p in productos %}
+    <div class="col-md-6 col-lg-4">
+
+        <div class="product-card animate__animated animate__bounce">
+
+            <img class="product-image"
+                src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=900&q=85"
+                alt="{{p.nombre}}">
+
+            <div class="product-body">
+
+                <span class="product-category">
+                    {{p.categoria.nombre}}
+                </span>
+
+                <h3 class="product-name mt-2">
+                    Clásica de la casa {{ p.nombre}}
+                </h3>
+
+                <p class="product-description">
+                    Carne artesanal, queso cheddar,
+                    lechuga, tomate y salsa especial.
+                </p>
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <span class="price">
+                        ${{p.precio}}
+                    </span>
+
+                    <button class="btn btn-sm btn-dark rounded-pill px-3 add-cart" data-product="Clásica de la casa">
+                        <i class="bi bi-plus-lg me-1"></i>
+                        Agregar
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    {% endfor%}
+
+
+</div>
+
+{% endblock%}
+
+{% block title %} Productos {%endblock%}

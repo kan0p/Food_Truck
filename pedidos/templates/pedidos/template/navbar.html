@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg sticky-top border-bottom">
+    <div class="container py-2">
+
+        <a class="navbar-brand brand" href="#">
+            <i class="bi bi-egg-fried me-2"></i>
+            Sabor & Mesa
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'productos' %}">Inicio</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'test' %}">Prueba</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'registro' %}">Crear Producto</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary-custom" href="#contacto">
+                        <i class="bi bi-whatsapp me-1"></i>
+                        Pedir ahora
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
