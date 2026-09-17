@@ -1,0 +1,35 @@
+{% extends "pedidos/template/base.html" %}
+
+{% block title %} Editar Producto {%endblock%}
+
+{% block contenido %}
+
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Categoría</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for producto in productos %}
+            <tr>
+                <td scope="row">{{ producto.id }}</td>
+                <td>{{ producto.nombre }}</td>
+                <td>{{ producto.precio }}</td>
+                <td>{{ producto.categoria.nombre }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{% url 'editar_producto' producto.id %}">Editar</a>
+                    <a class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{%endblock%}
