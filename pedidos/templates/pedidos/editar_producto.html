@@ -1,0 +1,30 @@
+{% extends "pedidos/template/base.html" %}
+
+{% block title %} Editar Producto {%endblock%}
+
+{% block contenido %}
+<div id="form-registro" class="card p-4 border-1">
+    <form method="post" action="{% url 'editar_producto' producto.id %}">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre </label>
+            <input value="{{producto.nombre}}" type="text" class="form-control" name="nombre" placeholder="Nombre">
+        </div>
+        <div class="mb-3">
+            <label for="precio" class="form-label">Precio</label>
+            <input value="{{producto.precio}}" type="number" class="form-control" name="precio" placeholder="Precio">
+        </div>
+        <div class="mb-3">
+            <select name="categoria" class="form-select" aria-label="Default select example">
+                <option >Categoría</option>
+                {% for c in categorias %}
+                    <option value="{{ c.id }}" {% if c.id == producto.categoria.id %} selected {% endif %}>{{ c.nombre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+    </form>
+</div>
+{%endblock%}

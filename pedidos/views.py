@@ -28,5 +28,15 @@ def editar(request):
     return render (request,"pedidos/editar.html", {"productos":productos})
 
 def editar_producto(request, id):
-    productos = Producto.objects.all()
-    return render (request,"pedidos/editar.html", {"productos":productos})
+    producto = Producto.objects.get(id=id)
+    categorias = Categoria.objects.all()
+
+    if request.method == "POST":
+        
+        producto.nombre = request.POST["nombre"]
+        producto.precio = request.POST["precio"]
+        producto.categoria = Categoria.objects.get(id = request.POST["categoria"])
+        producto.save()
+        return redirect("editar")
+
+    return render (request,"pedidos/editar_producto.html", {"producto":producto, "categorias":categorias})
