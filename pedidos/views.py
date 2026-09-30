@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
 from .models import Producto, Categoria
 
+from .serializers import ProductoSerializer
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+
 # Create your views here.
 def productos (request):
     productos = Producto.objects.all()  
@@ -40,3 +44,11 @@ def editar_producto(request, id):
         return redirect("editar")
 
     return render (request,"pedidos/editar_producto.html", {"producto":producto, "categorias":categorias})
+
+@api_view(["GET"])
+def api_productos(request):
+    productos = Producto.objects.all()
+
+    datos = ProductoSerializer(productos, many=True)  
+    return  Response(datos.data)
+        
